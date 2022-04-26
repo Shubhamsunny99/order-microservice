@@ -19,7 +19,7 @@ let table = new Schema(
       },
       orderStatus: {
         type: String,
-        enum : [''],
+        enum : ['In-Progress', 'Completed', 'Cancel'],
         default : null
       }
   },

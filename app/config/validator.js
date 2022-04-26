@@ -2,10 +2,11 @@ const { Validator } = require('node-input-validator');
 
 addOrderValidation = (req, res, next) => {
     const validate = new Validator(req.body, {
-        restuarantID : "required|string",
-        userID       : "required|string",
-        menus        : "required|array",
-        orderStatus  : "required|string",
+        "restuarantID"  : "required|string",
+        "userID"        : "required|string",
+        "menus"         : "required|array",
+        "menus.*.menuID": "required|string",
+        "menus.*.price" : "required|integer"
     });
   
     validate.check().then((matched) => {
