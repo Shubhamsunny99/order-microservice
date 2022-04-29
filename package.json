@@ -20,6 +20,7 @@
     "mongoose": "^6.2.10",
     "node-input-validator": "^4.5.0",
     "nodemon": "^2.0.15",
+    "redis": "^4.0.6",
     "swagger-ui-express": "^4.3.0",
     "yamljs": "^0.3.0"
   }

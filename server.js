@@ -2,6 +2,7 @@ require("dotenv").config()
 const app = require('./app/index')
 const http=require("http");
 const connectMongo = require("./app/config/orderdb");
+const redis = require('redis')
  
 //express application
 const server = http.createServer(app)
@@ -15,8 +16,24 @@ if (process.env.NODE_ENV !== "test"){
     Promise.all([
         connectMongo()
     ])
-    .then ( results => {
+    .then ( async results => {
         console.log("Mongo db Connected") 
+
+        let client = await redis.createClient ({
+            port : process.env.REDIS_PORT,
+            host : process.env.REDIS_HOST
+        });
+    
+        client.on('connect', function() {
+        console.log("wqwqqqqqqqqqqqqqqqqqqq")
+
+            console.log('Redis client connected');
+    
+        });
+    
+        client.on('error', function (err) {
+            console.log("Redis Error")
+        });
         
         server.listen(PORT, IP_ADDRESS, function(err){
    
