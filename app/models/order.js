@@ -21,6 +21,10 @@ let table = new Schema(
         type: String,
         enum : ['In-Progress', 'Completed', 'Cancel'],
         default : null
+      },
+      address : {
+        type : Object,
+        default : {}
       }
   },
   {

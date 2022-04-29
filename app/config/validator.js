@@ -6,7 +6,13 @@ addOrderValidation = (req, res, next) => {
         "userID"        : "required|string",
         "menus"         : "required|array",
         "menus.*.menuID": "required|string",
-        "menus.*.price" : "required|integer"
+        "menus.*.price" : "required|integer",
+        "address"       : "required|object",
+        "address.address_1"   : "required|string",
+        "address.address_2"   : "string",
+        "address.zipcode"     : "required|integer|minLength:6|maxLength:6",
+        "address.state"       : "required|string",
+        "address.city"        : "required|string",
     });
   
     validate.check().then((matched) => {

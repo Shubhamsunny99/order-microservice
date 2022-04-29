@@ -10,7 +10,8 @@ module.exports = {
                 restuarantID : body.restuarantID,
                 userID       : req.token._id,
                 menus        : body.menus,
-                orderStatus  : 'In-Progress'
+                orderStatus  : 'In-Progress',
+                address      : body.address
             }
 
             await Order.create(orderData)
@@ -28,8 +29,8 @@ module.exports = {
             const _id = params.id;
             const orderData = {
                 restuarantID : body.restuarantID,
-                userID       : body.userID,
-                menus        : body.menus
+                menus        : body.menus,
+                address      : body.address
             }
             await Order.findOne({_id : _id})
                 .then(order_D => {
