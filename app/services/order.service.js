@@ -8,7 +8,7 @@ module.exports = {
         return new Promise(async(resolve, reject) => {
             const orderData = {
                 restuarantID : body.restuarantID,
-                userID       : body.userID,
+                userID       : req.token._id,
                 menus        : body.menus,
                 orderStatus  : 'In-Progress'
             }

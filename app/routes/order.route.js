@@ -1,12 +1,14 @@
 const express          = require("express");
 const orderController  = require("../controllers/order.controller");
 const Validation       = require('../config/validator');
+const Authorisation = require("../config/tokenValidation");
+
 
 
 const orderRoutes = express.Router()
 
 // /orders is prefix from app/index.js 
-orderRoutes.post('/add-order', Validation.addOrderValidation, orderController.addOrders)
+orderRoutes.post('/add-order', Authorisation.tokenValidation, Validation.addOrderValidation, orderController.addOrders)
 
 orderRoutes.get('/fetch-order/:id', orderController.individualOrders)
 
